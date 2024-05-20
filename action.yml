@@ -1,6 +1,6 @@
 name: Versatile PyInstaller No Remove Tags
 author: '@sayyid5416'
-description: Package python scripts into executables for all OS: preserves tags on fetch edition
+description: Package python scripts into executables for all OS, preserves tags on fetch edition
 branding: 
   icon: hard-drive
   color: yellow
