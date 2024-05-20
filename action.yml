@@ -1,6 +1,6 @@
-name: Versatile PyInstaller
+name: Versatile PyInstaller No Remove Tags
 author: '@sayyid5416'
-description: Customisable GitHub Action to package python scripts into executables for different OS's
+description: Package python scripts into executables for all OS: preserves tags on fetch edition
 branding: 
   icon: hard-drive
   color: yellow
