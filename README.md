@@ -66,12 +66,14 @@ You can also use any major tags like `@v1` for any `@v1.*.*`
   | `spec`  _(required)_  | -        | Path of your `.py` or `.spec` file
   | `requirements`        | -        | Path of your `requirements.txt` file
   | `options`             | -        | [Options](#-supported-pyinstaller-options) to set for pyinstaller command
+  | `spec_options`        | -        | [Custom parameters for the spec file](https://pyinstaller.org/en/v6.0.0/spec-files.html#adding-parameters-to-spec-files)
   | `python_ver`          | 3.10     | Specific python version you want to use
   | `python_arch`         | x64      | Specific python architecture you want to use
   | `pyinstaller_ver`     | -        | Specific pyinstaller version you want to use <br>*(with proper signs, like `==5.13.2`)*
   | `exe_path`            | ./dist   | Path on runner-os, where executable will be stored
   | `upload_exe_with_name`| -        | Upload exe_ artifact with this name. Else, it won't upload
   | `clean_checkout`      | true     | If true, perform a clean checkout; if false, skip cleaning. Cleaning will remove all existing local files not in the repository during checkout. If you use utilities like pyinstaller-versionfile, set this to false.
+  | `lfs`                 | false    | Whether to download Git-LFS files (passed to `lfs` option in actions/checkout step)
   | `compression_level`   | 6        | Level of compression for archive. <br>Range: 0 and 9. <br>_(0 = No compression, 9 = Max compression)_.
 
 <br>
@@ -96,6 +98,7 @@ You can also use any major tags like `@v1` for any `@v1.*.*`
  | `--console`,    `--nowindowed`,    `-c` | `--add-binary <SRC;DEST or SRC:DEST>`   |
  | `--windowed`,   `--noconsole`,     `-w` | `--collect-data <MODULENAME>`           |
  |                                         | `--collect-all <MODULENAME>`            |
+ |                                         | `--version-file <FILE>`                 |
 
 
 <br>
@@ -108,7 +111,7 @@ You can also use any major tags like `@v1` for any `@v1.*.*`
 ```yaml
 jobs:
   pyinstaller-build:
-    runs-on: <windows-latest / ubuntu-latest / ..... etc>
+    runs-on: #<windows-latest / ubuntu-latest / ..... etc>
     steps:
       - name: Create Executable
         uses: sayyid5416/pyinstaller@v1
@@ -118,7 +121,8 @@ jobs:
           spec: 'src/build.spec'
           requirements: 'src/requirements.txt'
           upload_exe_with_name: 'My executable'
-          options: --onefile, --name "My App", --windowed, 
+          options: --onefile, --name "My App", --windowed
+          spec_options: # any custom arguments you want like: `--debug`
 ```
 
 
